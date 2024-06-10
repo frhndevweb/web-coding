@@ -106,7 +106,7 @@
             <button id="run-button">Run</button>
         </div>
         <div id="output-container">
-            <iframe id="output-frame" sandbox="allow-scripts"></iframe>
+            <iframe id="output-frame"></iframe>
         </div>
     </main>
     <footer>&copy; frhndevweb</footer>
@@ -115,7 +115,9 @@
             var code = document.getElementById('code-editor').value;
             var iframe = document.getElementById('output-frame');
             var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            iframeDoc.body.innerHTML = code;
+            iframeDoc.open();
+            iframeDoc.write(code);
+            iframeDoc.close();
         });
     </script>
 </body>
